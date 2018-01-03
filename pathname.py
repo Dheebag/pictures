@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def display_files():
 	error = None
-	dir = request.args.get('dirs','')
+	dir = request.args.get('path','')
 	dir = "/" + dir
 	#print "DIR is %s" % dir
 	if dir == "":
