@@ -17,11 +17,13 @@ def display_files():
 	#print "DIR is %s" % dir
 	#print os.listdir(dir)
 	if os.path.isdir(dir): 
-		mylist = os.listdir(dir)
-		print mylist
-		if mylist == "":
-			return "No files !"
+		mydirs = next(os.walk(dir))[1]
+		myfiles = next(os.walk(dir))[2]
+		#myfiles = [ f for f in os.listdir(dir) if os.path.isfile(os.path.join(dir,f)) ]
+		print mydirs, myfiles
+		if mydirs == "":
+			return "No directories !"
 		else:
-			return jsonify(Directories=mylist) 
+			return jsonify(Directories=mydirs, Files=myfiles) 
 	else:
 		return "%s Dir doesn't exist" % dir
