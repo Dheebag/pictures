@@ -24,10 +24,8 @@ def display_files():
 		if mydirs == "":
 			return "No directories !"
 		else:
-			message = jsonify(Directories=mydirs, Files=myfiles)
-			print message
 
-			return render_template('index.html', message = message)
+			return render_template('index.html', dirs = mydirs, files=myfiles)
 			#return jsonify(Directories=mydirs, Files=myfiles) 
 	else:
 		return "%s Dir doesn't exist" % dir

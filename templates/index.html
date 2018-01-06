@@ -1,0 +1,30 @@
+<!-- templates/index.html -->  
+<html>  
+  <head>
+    <title>Family Pictures</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <h1>{{message}}</h1>
+
+    <h3>Family Album over the years</h3>
+    <ol>
+        <li><a href="{{ Directories }}">Files</a></li>
+	<ul class="menu">
+	{% for d in dirs %}
+		
+            <li>{{ d }}<a href="{{ dirs[d] }}"</a></li>
+	{% endfor %}
+		
+	</ul>
+        <li><a href="{{ files }}">Files</a></li>
+	<ul class="menu">
+	{% for f in files %}
+		
+            <li>{{ f }}<a href="{{ files[f] }}"</a></li>
+	{% endfor %}
+	< /ul>
+    </ol>
+
+  </body>
+</html>  
