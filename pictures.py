@@ -11,6 +11,9 @@ app = Flask(__name__)
 def display_files():
 	error = None
 	dir = request.args.get('path','')
+	my_path= os.path.join(request.args.get('path',''))
+	print my_path
+
 	dir = "/" + dir
 	if dir == "":
 		dir = "/"
@@ -25,7 +28,7 @@ def display_files():
 			return "No directories !"
 		else:
 
-			return render_template('index.html', dirs = mydirs, files=myfiles)
+			return render_template('index.html', my_path=my_path,dirs = mydirs, files=myfiles)
 			#return jsonify(Directories=mydirs, Files=myfiles) 
 	else:
 		return "%s Dir doesn't exist" % dir

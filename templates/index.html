@@ -9,19 +9,17 @@
 
     <h3>Family Album over the years</h3>
     <ol>
-        <li><a href="{{ Directories }}">Files</a></li>
+        <li><a href="{{ dirs }}">Directories</a></li>
 	<ul class="menu">
 	{% for d in dirs %}
-		
-            <li>{{ d }}<a href="{{ dirs[d] }}"/"{{d}}"</a></li>
+		<p><a href="{{ my_path}}/{{d}}">{{ d }}</a></p>
 	{% endfor %}
 		
 	</ul>
         <li><a href="{{ files }}">Files</a></li>
 	<ul class="menu">
 	{% for f in files %}
-		print {{ files[f] }}	
-            <li>{{ f }}<a href="{{ files[f] }}"</a></li>
+		<p><a href="{{ my_path}}{{f}}">{{ f }}</a></p>
 	{% endfor %}
 	< /ul>
     </ol>
