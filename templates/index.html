@@ -1,28 +1,13 @@
-<!-- templates/index.html -->  
+<!DOCTYPE html>  
 <html>  
-  <head>
-    <title>Family Pictures</title>
-    <link rel="stylesheet" href="/static/style.css">
-  </head>
-  <body>
-    <h1>{{message}}</h1>
-
-    <h3>Family Album over the years</h3>
-    <ol>
-        <li><a href="{{ dirs }}">Directories</a></li>
-	<ul class="menu">
-	{% for d in dirs %}
-		<p><a href="{{ my_path}}/{{d}}">{{ d }}</a></p>
+<head>
+	<title>Family Pictures</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<h3>Family Album over the years</h3>
+	{% for d in dir %}
+        	<li><a href="{{my_url}}?path={{my_path}}/{{ d }}">{{d}}</a></li>
 	{% endfor %}
-		
-	</ul>
-        <li><a href="{{ files }}">Files</a></li>
-	<ul class="menu">
-	{% for f in files %}
-		<p><a href="{{ my_path}}{{f}}">{{ f }}</a></p>
-	{% endfor %}
-	< /ul>
-    </ol>
-
-  </body>
+</body>
 </html>  
