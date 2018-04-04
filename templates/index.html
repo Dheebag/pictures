@@ -6,11 +6,13 @@
 </head>
 <body>
 	<h3>Family Album over the years</h3>
+	<h4> Back <a href="{{my_url}}?path={{prev_dir}}">link</a></h4>
 	{% for key in my_dict %}
 		{% if key.get('Directory') != None %}
         		<ul>D <a href="{{my_url}}?path={{my_path}}/{{key.get('Directory') }}">{{key.get('Directory')}}</a></ul>
 		{% else %}
-			<ul>F <a href="{{my_url}}?path={{my_path}}/{{key.get('File')}} ">{{key.get('File')}}</a></ul>
+			<ul>F <a href="{{my_url}}?path={{my_path}}/{{key.get('File')}}{{data}} ">{{key.get('File')}}{{data}}</a></ul>
+			<p>{{ data }}</p>
 		{% endif %}
 	{% endfor %}
 </body>

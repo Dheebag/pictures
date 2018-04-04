@@ -7,7 +7,8 @@ import json
 from os import listdir
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET','POST'])
+
 def display_files():
 	error = None
 	dir = request.args.get('path','')
@@ -18,6 +19,8 @@ def display_files():
 
 	if dir == "":
 		dir = "/"
+	prev_dir = dir+"/.."
+	print prev_dir
 	if os.path.isdir(dir):
 		mydirs = next(os.walk(dir))[1]
 		for d in mydirs:
@@ -38,7 +41,16 @@ def display_files():
 			return "No directories !"
 		else:
 
-			return render_template('index.html', dir=os.listdir(dir),my_base_url=my_base_url,my_path=my_path,my_dict = my_list_of_dict, files=myfiles)
+			return render_template('index.html', prev_dir=prev_dir,dir=os.listdir(dir),my_base_url=my_base_url,my_path=my_path,my_dict = my_list_of_dict, files=myfiles)
 			#return jsonify(Directories=mydirs, Files=myfiles) 
+	elif os.path.isfile(dir):
+		#file = filename(dir) 
+		print "DIR %s" % dir 
+		if dir:
+			with open(dir,'r') as f:
+				content = f.read()
+				return render_template('index.html',data=content, prev_dir=prev_dir,dir=dir,my_base_url=my_base_url,my_path=my_path,my_dict=my_list_of_dict)
+		else:
+			return "%s doesn't exist" % dir
 	else:
-		return "%s Dir doesn't exist" % dir
+		return "%s doesn't exist" % dir
