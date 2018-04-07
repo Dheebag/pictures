@@ -19,7 +19,7 @@ def display_files():
 
 	if dir == "":
 		dir = "/"
-	prev_dir = dir+"/.."
+	prev_dir = os.path.split(dir)[0]
 	print prev_dir
 	if os.path.isdir(dir):
 		mydirs = next(os.walk(dir))[1]

@@ -6,7 +6,9 @@
 </head>
 <body>
 	<h3>Family Album over the years</h3>
-	<h4> Back <a href="{{my_url}}?path={{prev_dir}}">link</a></h4>
+	{% if my_path != "/" %}
+	<h4><a href="{{my_url}}?path={{prev_dir}}">Go Back</a></h4>
+	{% endif %}
 	{% for key in my_dict %}
 		{% if key.get('Directory') != None %}
         		<ul>D <a href="{{my_url}}?path={{my_path}}/{{key.get('Directory') }}">{{key.get('Directory')}}</a></ul>
